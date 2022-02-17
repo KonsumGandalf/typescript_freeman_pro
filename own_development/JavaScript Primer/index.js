@@ -73,3 +73,24 @@ console.log(`Selected: ${JSON.stringify(someProperties)}`); */
 console.log(`Hat: ${hat.price}, ${hat.priceIncPrec}`);
 hat.price = 120;
 console.log(`Hat: ${hat.price}, ${hat.priceIncPrec}`);
+
+let myObj = {
+    greeting: "Hi, there",
+
+    writeMessage(message) {
+        console.log(`${this.greeting}, ${message}`);
+    },
+
+	getWriter() {
+	 return (message) => console.log(`${this.greeting}, ${message}`);
+	}
+}
+
+// myObj.writeMessage = myObj.writeMessage.bind(myObj);
+
+greeting = "Hello";
+myObj.writeMessage("It is sunny today");
+let myFunction = myObj.writeMessage;
+myFunction("It is sunny today");
+
+let writer = myObj.getWriter()("It's raining today");
