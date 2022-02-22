@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "esm": "^3.2.25",
     "node": "^17.4.0"
   },
   "devDependencies": {
