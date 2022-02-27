@@ -6,6 +6,7 @@
   "scripts": {
     "start": "tsc-watch --onsuccess \"node dist/index.js\"",
     "array": "tsc-watch --onsuccess \"node dist/array.js\"",
+    "objects": "tsc-watch --onsuccess \"node dist/object_classes_1.js\"",
     "classes": "tsc-watch --onsuccess \"node dist/classes.js\""
   },
   "keywords": [],
