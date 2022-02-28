@@ -1,11 +1,17 @@
+export {};
+
 function calculateTax(amount: number | string): number | string {
-  if (typeof (amount) === "number") {
+  if (typeof amount === "number") {
     return amount * 1.2;
   }
   return amount;
 }
 function writePrice(product: string, price: number | string): void {
-  console.log(`Price for ${product}: $${typeof (price) === "number" ? price.toFixed(2) : price}`);
+  console.log(
+    `Price for ${product}: $${
+      typeof price === "number" ? price.toFixed(2) : price
+    }`
+  );
 }
 
 const prices: (number | string)[] = [100, 75, 23, "30"];
@@ -18,8 +24,15 @@ prices.forEach((price: number | string, index: number) => {
   writePrice(names[index], calculateTax(price));
 });
 
-const products: [string, number][] = [["M416", 800], ["AKM", 300]];
-const catalogTupleUnion: ([string, number] | boolean)[] = [true, ["Scar", 1000], ...products];
+const products: [string, number][] = [
+  ["M416", 800],
+  ["AKM", 300],
+];
+const catalogTupleUnion: ([string, number] | boolean)[] = [
+  true,
+  ["Scar", 1000],
+  ...products,
+];
 
 catalogTupleUnion.forEach((elem: [string, number] | boolean) => {
   if (elem instanceof Array) {
@@ -34,11 +47,22 @@ catalogTupleUnion.forEach((elem: [string, number] | boolean) => {
 const hat: [string, number, number?] = ["Hat", 100];
 const gloves: [string, number, number?] = ["Gloves", 75, 10];
 
-const restArray: [string, number?, ...(number | string | undefined)[]] = ["Hat", 20, ...hat, ...gloves];
+const restArray: [string, number?, ...(number | string | undefined)[]] = [
+  "Hat",
+  20,
+  ...hat,
+  ...gloves,
+];
 console.log(restArray);
 
 // eslint-disable-next-line
-enum EquipmentType { Helmet, West, AR, DMR, Car }
+enum EquipmentType {
+  Helmet,
+  West,
+  AR,
+  DMR,
+  Car,
+}
 const equipments: [EquipmentType, number][] = [
   [EquipmentType.Helmet, 100],
   [EquipmentType.AR, 600],
@@ -74,22 +98,22 @@ const equiVal: EquipmentType = 9;
 console.log(EquipmentType[0], equiVal);
 
 enum CarBrand {
-    Audi = 0,
-    VW = 1,
-    BMW,
-    Benz = 10,
-    Opel = Audi + VW + BMW
+  Audi = 0,
+  VW = 1,
+  BMW,
+  Benz = 10,
+  Opel = Audi + VW + BMW,
 }
 
 console.log(CarBrand.Opel, CarBrand.Audi);
 
 // eslint-disable-next-line
 const enum CountryCapital {
-    DE = "Berlin",
-    UK = "London",
-    FR = "Paris",
-    UA = "Kiew",
-    RUS = "Moscow"
+  DE = "Berlin",
+  UK = "London",
+  FR = "Paris",
+  UA = "Kiew",
+  RUS = "Moscow",
 }
 
 console.log(CountryCapital.DE);

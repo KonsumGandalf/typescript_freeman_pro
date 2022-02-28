@@ -1,12 +1,13 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 function calculateTax(amount) {
-    if (typeof (amount) === "number") {
+    if (typeof amount === "number") {
         return amount * 1.2;
     }
     return amount;
 }
 function writePrice(product, price) {
-    console.log(`Price for ${product}: $${typeof (price) === "number" ? price.toFixed(2) : price}`);
+    console.log(`Price for ${product}: $${typeof price === "number" ? price.toFixed(2) : price}`);
 }
 const prices = [100, 75, 23, "30"];
 const prices2 = [100, "75"];
@@ -15,8 +16,15 @@ prices.push(...[100, 100, 100]);
 prices.forEach((price, index) => {
     writePrice(names[index], calculateTax(price));
 });
-const products = [["M416", 800], ["AKM", 300]];
-const catalogTupleUnion = [true, ["Scar", 1000], ...products];
+const products = [
+    ["M416", 800],
+    ["AKM", 300],
+];
+const catalogTupleUnion = [
+    true,
+    ["Scar", 1000],
+    ...products,
+];
 catalogTupleUnion.forEach((elem) => {
     if (elem instanceof Array) {
         const [str, num] = elem;
@@ -29,7 +37,12 @@ catalogTupleUnion.forEach((elem) => {
 });
 const hat = ["Hat", 100];
 const gloves = ["Gloves", 75, 10];
-const restArray = ["Hat", 20, ...hat, ...gloves];
+const restArray = [
+    "Hat",
+    20,
+    ...hat,
+    ...gloves,
+];
 console.log(restArray);
 // eslint-disable-next-line
 var EquipmentType;
