@@ -222,3 +222,5 @@ Object.values(dynamicGroup).forEach((k) =>
 );
 const totalCost = dynamicGroup.hat.price + (dynamicGroup.tretter?.price ?? 0);
 console.log(`Total: ${totalCost}`);
+
+export { Person, Product };

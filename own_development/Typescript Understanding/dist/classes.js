@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+exports.Person = void 0;
 /**
 type Person = {
   id: string;
@@ -96,6 +97,7 @@ class Person {
         return `${this.name}, ${this.getSpecificDetails()}`;
     }
 }
+exports.Person = Person;
 class Child extends Person {
     constructor(id, name, city, parents, age) {
         super(id, name, city);
@@ -168,7 +170,7 @@ class SportsProduct {
 }
 class ProductGroup {
     constructor(...initialProducts) {
-        initialProducts.forEach((p) => this[p[0]] = p[1]);
+        initialProducts.forEach((p) => (this[p[0]] = p[1]));
     }
 }
 const dynamicGroup = new ProductGroup(["shoes", new SportsProduct("Shoes", "Running", 20.1)], ["tretter", new SportsProduct("Shoe", "Football", 88)]);
