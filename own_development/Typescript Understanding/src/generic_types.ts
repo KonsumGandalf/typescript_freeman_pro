@@ -1,6 +1,7 @@
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
 /* eslint-disable no-useless-constructor */
+/* eslint-disable eol-last */
 import {
   Person, Product, City, Employee,
 } from "./dataTypes";
@@ -95,7 +96,11 @@ class AdvancedCollection<T extends { name: string }> extends DataCollection<T> {
     return this.items.filter((item) => predicate(item)) as V[];
   }
 
-  static reverse(items: any[]) {
+  static reverse<reverseType>(items: reverseType[]): reverseType[] {
+    return items.reverse();
+  }
+
+  static reverseBase(items: any[]): any[] {
     return items.reverse();
   }
 }
@@ -119,3 +124,55 @@ function isProduct(target): target is Product {
 }
 const filteredProducts = mixedData.filter<Product>(isProduct);
 filteredProducts.forEach((p) => console.log(`Product: ${p.name}, ${p.price}`));
+
+const reversedCities: City[] = AdvancedCollection.reverse<City>(cities);
+reversedCities.forEach((city) => console.log(city));
+
+const reversedCities2 = AdvancedCollection.reverseBase(cities);
+reversedCities2.forEach((city) => console.log(city));
+
+type shapeType = { name: string };
+interface Collection<T extends shapeType> {
+  add(...items: T[]): void;
+  get(name: string): T;
+  count(): number;
+}
+interface SearchableCollection<T extends shapeType> extends Collection<T> {
+  find(name: string): T | undefined;
+}
+interface ProductCollection extends Collection<Product> {
+  sumPrices(): number;
+}
+interface PeopleCollection<T extends Product | Employee> extends Collection<T> {
+  getNames(): string[];
+}
+
+abstract class ArrayCollection<DataType extends shapeType> implements Collection<DataType> {
+  protected items: DataType[] = [];
+
+  add(...newItems: DataType[]): void {
+    this.items.push(...newItems);
+  }
+
+  abstract get(name: string): DataType;
+
+  count(): number {
+    return this.items.length;
+  }
+}
+
+class ProductCollection extends ArrayCollection<Product> {
+  get(name: string): Product {
+    return this.items.find((item) => item.name === name);
+  }
+}
+
+class PersonCollection extends ArrayCollection<Person> {
+  get(name: string): Person {
+    return this.items.find((item) => item.name === name);
+  }
+}
+
+const peopleCollection: Collection<Person> = new PersonCollection();
+peopleCollection.add(new Person("Bob Smith", "London"), new Person("Dora Peters", "New York"));
+console.log(`Collection size: ${peopleCollection.count()}`);

@@ -15,7 +15,8 @@ declare class AdvancedCollection<T extends {
     constructor(initialItems: T[]);
     find(name: string): T | undefined;
     filter<V extends T>(predicate: (target: any) => target is V): V[];
-    static reverse(items: any[]): any[];
+    static reverse<reverseType>(items: reverseType[]): reverseType[];
+    static reverseBase(items: any[]): any[];
 }
 export declare const peopleData: AdvancedCollection<Person>;
 export declare const collatedData: (City & Person)[];

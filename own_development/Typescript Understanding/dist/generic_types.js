@@ -4,6 +4,7 @@ exports.empData = exports.collatedData = exports.peopleData = void 0;
 /* eslint-disable import/no-unresolved */
 /* eslint-disable import/extensions */
 /* eslint-disable no-useless-constructor */
+/* eslint-disable eol-last */
 const dataTypes_1 = require("./dataTypes");
 const people = [
     new dataTypes_1.Person("Bob Smith", "London"),
@@ -89,6 +90,9 @@ class AdvancedCollection extends DataCollection {
     static reverse(items) {
         return items.reverse();
     }
+    static reverseBase(items) {
+        return items.reverse();
+    }
 }
 exports.peopleData = new AdvancedCollection(people);
 exports.collatedData = exports.peopleData.collate(cities, "name", "city");
@@ -107,3 +111,31 @@ function isProduct(target) {
 }
 const filteredProducts = mixedData.filter(isProduct);
 filteredProducts.forEach((p) => console.log(`Product: ${p.name}, ${p.price}`));
+const reversedCities = AdvancedCollection.reverse(cities);
+reversedCities.forEach((city) => console.log(city));
+const reversedCities2 = AdvancedCollection.reverseBase(cities);
+reversedCities2.forEach((city) => console.log(city));
+class ArrayCollection {
+    constructor() {
+        this.items = [];
+    }
+    add(...newItems) {
+        this.items.push(...newItems);
+    }
+    count() {
+        return this.items.length;
+    }
+}
+class ProductCollection extends ArrayCollection {
+    get(name) {
+        return this.items.find((item) => item.name === name);
+    }
+}
+class PersonCollection extends ArrayCollection {
+    get(name) {
+        return this.items.find((item) => item.name === name);
+    }
+}
+const peopleCollection = new PersonCollection();
+peopleCollection.add(new dataTypes_1.Person("Bob Smith", "London"), new dataTypes_1.Person("Dora Peters", "New York"));
+console.log(`Collection size: ${peopleCollection.count()}`);

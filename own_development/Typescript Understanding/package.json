@@ -8,7 +8,8 @@
     "array": "tsc-watch --onsuccess \"node dist/array.js\"",
     "objects": "tsc-watch --onsuccess \"node dist/object_classes_1.js\"",
     "classes": "tsc-watch --onsuccess \"node dist/classes.js\"",
-    "generic_types": "tsc-watch --onsuccess \"node dist/generic_types.js\""
+    "generic_types": "tsc-watch --onsuccess \"node dist/generic_types.js\"",
+    "advanced_generic_types": "tsc-watch --onsuccess \"node dist/advanced_generic_types.js\""
   },
   "keywords": [],
   "author": "",
