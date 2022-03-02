@@ -1,0 +1,26 @@
+{
+  "name": "typescript-understanding",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "tsc-watch --onsuccess \"node dist/index.js\"",
+    "array": "tsc-watch --onsuccess \"node dist/array.js\"",
+    "objects": "tsc-watch --onsuccess \"node dist/object_classes_1.js\"",
+    "classes": "tsc-watch --onsuccess \"node dist/classes.js\"",
+    "generic_types": "tsc-watch --onsuccess \"node dist/generic_types.js\"",
+    "advanced_generic_types": "tsc-watch --onsuccess \"node dist/advanced_generic_types.js\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^5.12.1",
+    "@typescript-eslint/parser": "^5.12.1",
+    "eslint": "^8.9.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.25.4",
+    "tsc-watch": "^4.6.0",
+    "typescript": "^4.5.5"
+  }
+}

@@ -1,0 +1,5 @@
+{
+    "vsprettier.useEsLint": true,
+    "vsprettier.arrowParens": "always",
+    "vsprettier.htmlWhitespaceSensitivity": "strict"
+}
